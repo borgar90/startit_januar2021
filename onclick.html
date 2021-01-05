@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On click</title>
+</head>
+<body>
+        <h1>Hva heter jeg?</h1>
+        <p onclick="sjekkSvar(this)">Are</p>
+        <p onclick="sjekkSvar(this)">Bjarne</p>
+        <p onclick="sjekkSvar(this)">Borgar</p>
+        <p id="svarsjekk"></p>
+        <script>
+            function sjekkSvar(test){
+                svarsjekk = document.getElementById('svarsjekk'); 
+                if(test.innerHTML == 'Borgar'){
+                    svarsjekk.innerHTML = 'Riktig Svar';
+                }else{
+                    svarsjekk.innerHTML = 'Feil svar';
+                }
+            }
+        </script>
+</body>
+</html>
