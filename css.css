@@ -1,17 +1,37 @@
+/*
+Øvelse på grid 
+AV: Borgar Flaen Stensrud */
+
 *{
     padding:0;
     margin:0;
 }
+
+/*fonts */
+h1{
+    font-family: 'lato', sans-serif;
+    
+}
+#hero h1{
+    font-size: 150px;
+}
+p{
+    font-family: 'Oswald', sans-serif;
+font-family: 'Source Sans Pro', sans-serif;
+}
+
+/*gridholder */
 #page{
     height: 100vh;
     display: grid;
-    grid-template-columns: auto 200px;
-    grid-template-rows: 20px 20px auto 100px;
+    grid-template-columns:  6fr ;
+    grid-template-rows:  auto 4fr 300px 100px;
     grid-template-areas:
-'header  header'
-'nav  nav'
-' main  right'
-'footer  footer';
+
+' main '
+'mainContent '
+' featured '
+' footer ';
 }
 #header{
     background: #c5d5cb;
@@ -22,47 +42,145 @@
     padding-right: 10px;
     color:white;
 }
+#img{
+    grid-area:img;
+}
+#img img{
+    width: 100%;
+    height:100%;
+}
 #nav{
     background: #9fa8a3;
     color: white;
     grid-area:nav;
     text-align: center;
-    
+    padding-top:40px;
 }
 #nav a {
     color:white;
     text-decoration: none;
     padding:10px;
 }
-#mainContent{
+#hero{
     grid-area: main;
     background-color: #e3e0cf;
-    padding: 20px;
+    background:linear-gradient(0deg, rgba(2, 2, 2, 0.3), rgba(7, 7, 7, 0.3)), url('img/sewer-01-01.png') no-repeat;
+    background-size:cover;
+    color:white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height:100vh;
+    flex-direction:column;
+}
+#btn{
+    background: white;
+    color:black;
+    padding:10px;
+}
+.btn{
+    padding:20px;
+}
+#btn:hover{
+    cursor: pointer;
+}
+
+#mainContent p {
+    max-width: 450px;
 }
 .dline{
    color: #e3e0cf;
 }
+
+
+#mainContent{
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    padding:100px;
+}
+#mainContent div{
+    max-width: 300px;
+}
 #right{
     grid-area: right;
     padding: 20px;
+    color:white;
+}
+#featured{
+    grid-area: featured;
+    color: white;
+    background: #9fa8a3;
+    
+    
+}
+#featured .featuredContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:130px;
+}
+#featured h1 {
+
 }
 #footer{
     grid-area: footer;
     background-color: #c5d5cb;
+    
+}
+#footer .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
 }
 
 @media only screen and (max-width: 600px) {
 div#page {
-    grid-template-columns: 1fr;
-    grid-template-rows: 20px 1fr 4fr 1fr 20px;
-    grid-template-areas: 'header' 
-                         'nav'
-                         'main'
-                         'right'
-                         'footer';
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows:  4fr 2fr 20px;
+    grid-template-areas: 
+                         'main main'
+                         'featured featured'
+                         'footer footer';
 }
 
 }
+
+
+#a{
+    background:#1A4341;
+    top:25%;
+    left:20%;
+ }
+  
+  #b{
+    background:#F3ac3c;
+    top:25%;
+    left:45%;
+    z-index:1
+  }
+   #c{
+    background:#998235;
+    top:25%;
+    left:32%;
+  }
+  .leaf{
+    width: 150px;
+    height: 150px;
+    background: #B5e0ba;
+    border-radius:100px 0px;
+    position:absolute;
+  }
+  body {
+    background-color:#0B2429;
+    margin:0px;
+  }
+
+
+
 
 /* portfolio */
 
@@ -75,3 +193,4 @@ ul li{
 ul li img{
     width:150px;
 }
+
