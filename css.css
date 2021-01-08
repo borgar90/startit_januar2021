@@ -13,7 +13,7 @@ h1{
     
 }
 #hero h1{
-    font-size: 150px;
+    font-size: 8vw;
 }
 p{
     font-family: 'Oswald', sans-serif;
@@ -104,6 +104,7 @@ font-family: 'Source Sans Pro', sans-serif;
 #mainContent div{
     max-width: 300px;
 }
+
 #right{
     grid-area: right;
     padding: 20px;
@@ -113,14 +114,18 @@ font-family: 'Source Sans Pro', sans-serif;
     grid-area: featured;
     color: white;
     background: #9fa8a3;
-    
-    
-}
-#featured .featuredContent{
-    display: flex;
+    display:flex;
     align-items: center;
-    justify-content: center;
-    padding:130px;
+    justify-content: space-around;
+  
+}
+
+#featured .featuredContent{
+   
+}
+#featured .featuredContent img{
+    width:80%;
+    height:80%;
 }
 #featured h1 {
 
@@ -139,47 +144,36 @@ font-family: 'Source Sans Pro', sans-serif;
 
 @media only screen and (max-width: 600px) {
 div#page {
-    grid-template-columns: 1fr 1fr ;
-    grid-template-rows:  4fr 2fr 20px;
+    grid-template-columns: 1fr  ;
+    grid-template-rows:  4fr 2fr 2fr 100px;
     grid-template-areas: 
-                         'main main'
-                         'featured featured'
-                         'footer footer';
+    ' main '
+    'mainContent '
+    ' featured '
+    ' footer ';
+}
+#mainContent{
+    
+    flex-direction: column;
+}
+#mainContent div{
+    padding:20px;
+}
+#featured{
+ flex-direction: column; 
+}
+#featured div{
+    padding:20px;
 }
 
 }
 
 
-#a{
-    background:#1A4341;
-    top:25%;
-    left:20%;
- }
-  
-  #b{
-    background:#F3ac3c;
-    top:25%;
-    left:45%;
-    z-index:1
-  }
-   #c{
-    background:#998235;
-    top:25%;
-    left:32%;
-  }
-  .leaf{
-    width: 150px;
-    height: 150px;
-    background: #B5e0ba;
-    border-radius:100px 0px;
-    position:absolute;
-  }
+
   body {
     background-color:#0B2429;
     margin:0px;
   }
-
-
 
 
 /* portfolio */
