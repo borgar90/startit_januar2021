@@ -12,13 +12,16 @@ h1{
     font-family: 'lato', sans-serif;
     
 }
-#hero h1{
-    font-size: 8vw;
-}
 p{
     font-family: 'Oswald', sans-serif;
 font-family: 'Source Sans Pro', sans-serif;
 }
+
+/* HERO FONT size */
+#hero h1{
+    font-size: 8vw;
+}
+
 
 /*gridholder */
 #page{
@@ -33,15 +36,7 @@ font-family: 'Source Sans Pro', sans-serif;
 ' featured '
 ' footer ';
 }
-#header{
-    background: #c5d5cb;
-    grid-area: header;
-}
-#header a{
-    float: right;
-    padding-right: 10px;
-    color:white;
-}
+
 #img{
     grid-area:img;
 }
@@ -49,18 +44,7 @@ font-family: 'Source Sans Pro', sans-serif;
     width: 100%;
     height:100%;
 }
-#nav{
-    background: #9fa8a3;
-    color: white;
-    grid-area:nav;
-    text-align: center;
-    padding-top:40px;
-}
-#nav a {
-    color:white;
-    text-decoration: none;
-    padding:10px;
-}
+
 #hero{
     grid-area: main;
     background-color: #e3e0cf;
@@ -74,6 +58,7 @@ font-family: 'Source Sans Pro', sans-serif;
     height:100vh;
     flex-direction:column;
 }
+
 #btn{
     background: white;
     color:black;
@@ -85,14 +70,9 @@ font-family: 'Source Sans Pro', sans-serif;
 #btn:hover{
     cursor: pointer;
 }
-
 #mainContent p {
     max-width: 450px;
 }
-.dline{
-   color: #e3e0cf;
-}
-
 
 #mainContent{
     background: white;
@@ -105,11 +85,6 @@ font-family: 'Source Sans Pro', sans-serif;
     max-width: 300px;
 }
 
-#right{
-    grid-area: right;
-    padding: 20px;
-    color:white;
-}
 #featured{
     grid-area: featured;
     color: white;
@@ -121,19 +96,19 @@ font-family: 'Source Sans Pro', sans-serif;
 }
 
 #featured .featuredContent{
-   
+    padding-left: 50px;
 }
 #featured .featuredContent img{
     width:80%;
     height:80%;
 }
-#featured h1 {
 
-}
 #footer{
     grid-area: footer;
     background-color: #c5d5cb;
-    
+    display:flex;
+    justify-content: center;
+    color:white;
 }
 #footer .container{
     display: flex;
@@ -160,31 +135,16 @@ div#page {
     padding:20px;
 }
 #featured{
- flex-direction: column; 
+    display: flex;
+    flex-direction: column; 
+   
 }
 #featured div{
     padding:20px;
+    justify-content: space-around;
 }
 
 }
 
 
-
-  body {
-    background-color:#0B2429;
-    margin:0px;
-  }
-
-
-/* portfolio */
-
-ul {
-    list-style: none;
-}
-ul li{
-    padding: 10px;
-}
-ul li img{
-    width:150px;
-}
 
