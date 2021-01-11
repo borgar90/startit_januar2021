@@ -10,7 +10,7 @@
         <title>Kodelås</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="kodelas.css">
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -30,16 +30,38 @@
                 <div onclick="siffer(this)" class="siffer">9</div>
                 <div onclick="siffer(this)" class="siffer">0</div>
             </div>
-            <div id="losning">Låst med kode; skriv inn kode for å låse opp</div>
+            <h2 id="losning">Låst med kode; skriv inn kode for å låse opp</h2>
         </div>
 
         <script>
             var losning = '';
+            var i = 0;
+
             function siffer(siffer){
                 siffer = siffer.innerHTML;
                 losning += siffer + '-';
                 svarsted = document.getElementById('losning');
-                svarsted.innerHTML = losning;
+                
+
+                ///registrer første tall
+                // test 2 tall
+                //osv
+                if(siffer == 3 && i == 0){
+                    i++;
+                    console.log("riktig");
+                }else if(siffer == 8 && i == 1){
+                    i++;
+                }else if(siffer == 1 && i == 2){
+                    i++;
+                }else if(siffer == 2 && i == 3){
+                    svarsted.innerHTML ="Du knakk koden"
+                    i = 0;
+                }else{
+                    console.log("feil");
+                    i = 0;
+                }
+
+
             }
 
         </script>

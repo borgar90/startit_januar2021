@@ -1,0 +1,27 @@
+*{
+    padding:0px;
+    margin:0px;
+}
+#kodelas{
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+.siffer{
+    flex-grow: 1;
+    width: 33%;
+    height: 100px;
+    border: 1px solid gray;
+    display: flex;
+    font-size: 25px;
+    text-align: center;
+    cursor: pointer;
+    padding: 50px;
+}
+.siffer *{
+    justify-self: center;
+    align-self: center;
+}
+#losning{
+    padding: 50px;
+}
