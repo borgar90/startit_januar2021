@@ -96,11 +96,15 @@ font-family: 'Source Sans Pro', sans-serif;
 }
 
 #featured .featuredContent{
-    padding-left: 50px;
+    background: white;
+    max-width: 275px;
 }
 #featured .featuredContent img{
-    width:80%;
-    height:80%;
+    width:100%;
+}
+
+.featuredContent p{
+    padding:10px;
 }
 
 #footer{
