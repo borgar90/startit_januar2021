@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>css practice 3</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="container">
+            <div id="a" class="droplet"></div>
+            <div id="b" class="droplet"></div>
+            <div id="c" class="droplet"></div>
+        </div>
+            <style>
+              .container{
+                   position:absolute;
+                top:25%;
+                left:25%;
+              }
+              body{
+                padding:0px;
+                margin:0px;
+                background:#0b2429;
+              }
+                div {
+                    position:absolute;
+                }
+                .droplet{
+                    background: #F3AC3C;
+                    border-radius: 100px 0px 100px 100px;
+                    width: 120px;
+                    height: 120px;
+                }
+    
+                #a{
+                    top:75px;
+                    left:0px;
+                    z-index: 3;
+                }
+                #b{
+                    top:30px;
+                    left:40px;
+                    background: #998235;
+                    z-index: 2;
+                }
+                #c{
+                    top:-20px;
+                    left:90px;
+                    border-radius: 100px;
+                }
+    
+    </style>
+        <script src="" async defer></script>
+    </body>
+</html>

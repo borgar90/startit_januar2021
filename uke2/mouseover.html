@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Javascript uke 2</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body >
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <table>
+            <tr>
+                <td class="tdO">o</td>
+                <td class="tdO">o</td>
+            </tr>
+            <tr>
+                <td class="tdO">o</td>
+                <td class="tdO">o</td>
+            </tr>
+            <tr>
+                <td class="tdO">o</td>
+                <td class="tdO">o</td>
+            </tr>
+        </table>
+     
+     
+     <script>
+       // tar alle td i dokumentet og legger til en event listener 
+    // legger til x i td når man har mouseover.   
+       td = document.getElementsByTagName('td');
+       for(let i = 0; i < td.length; i++) {
+        td[i].addEventListener("mouseover", function() {
+            td[i].innerHTML = 'x';
+        })};
+
+
+    </script>
+    </body>
+</html>

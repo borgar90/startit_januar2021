@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Kodelås</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <div id="page">
+            <div id="kodelas">
+                <div onclick="siffer(this)" class="siffer">1</div>
+                <div onclick="siffer(this)" class="siffer">2</div>
+                <div onclick="siffer(this)" class="siffer">3</div>
+                <div onclick="siffer(this)" class="siffer">4</div>
+                <div onclick="siffer(this)" class="siffer">5</div>
+                <div onclick="siffer(this)" class="siffer">6</div>
+                <div onclick="siffer(this)" class="siffer">7</div>
+                <div onclick="siffer(this)" class="siffer">8</div>
+                <div onclick="siffer(this)" class="siffer">9</div>
+                <div onclick="siffer(this)" class="siffer">0</div>
+            </div>
+            <div id="losning">Låst med kode; skriv inn kode for å låse opp</div>
+        </div>
+
+        <script>
+            var losning = '';
+            function siffer(siffer){
+                siffer = siffer.innerHTML;
+                losning += siffer + '-';
+                svarsted = document.getElementById('losning');
+                svarsted.innerHTML = losning;
+            }
+
+        </script>
+    </body>
+</html>

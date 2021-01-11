@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>Ferdighet 6 - Sette sammen tekst av flere deler  og  bruke dette til å bygge HTML dynamisk</p>
+
+    <input id="sizeSlider" type="range" min="100" max="500" step="10" oninput="showDiv()" />
+    <input id="borderRadiussizeSlider" type="range" min="0" max="100" step="10" oninput="showDiv()" />
+    
+    <br /><input id="textInput" type="text" oninput="showDiv()" value="endre teksten!" />
+    <select id="colorChooser" onchange="showDiv()">
+        <option value="red">Red color</option>
+        <option selected value="green">Green color</option>
+        <option value="blue">Blue color</option>
+    </select>
+    <select id="borderColorChooser" onchange="showDiv()">
+        <option value="black">Black color</option>
+        <option selected value="gray">Gray color</option>
+        <option value="none">no color</option>
+    </select>
+    <div id="resultat"></div>
+    <div id="resultatHtml" style="font-family: monospace"></div>
+    <script>
+        var resultatDiv = document.getElementById('resultat');
+        var resultatHtmlDiv = document.getElementById('resultatHtml');
+        var sizeSlider = document.getElementById('sizeSlider');
+        var textInput = document.getElementById('textInput');
+        var colorChooser = document.getElementById('colorChooser');
+        var borderColorChoser =document.getElementById("borderColorChooser");
+        var borderRadiussizeSlider = document.getElementById("borderRadiussizeSlider");
+        showDiv();
+
+        function showDiv() {
+            resultatDiv.innerHTML = '<div style="'
+                + 'background-color: ' + colorChooser.value + ';'
+                + 'border: 1px solid ' + borderColorChoser.value + ';'  
+                + 'border-radius: ' + borderRadiussizeSlider.value + 'px;'
+                + 'width: ' + sizeSlider.value + 'px;'
+                + 'height: ' + sizeSlider.value + 'px;'
+                + '">' +
+                textInput.value + '</div>';
+                console.log(resultatDiv.innerHTML);
+            resultatHtmlDiv.innerText = resultatDiv.innerHTML;
+        }
+    </script>
+</body>
+</html>
