@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Oppgave 8</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            #container{
+                background-color: black;
+                color: white;
+                min-height: 20px;
+                padding: 20px;
+                font-size: 4vmin;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="container"></div>
+        <script>
+            calculate();
+
+            function calculate(){
+               //tilfeldig tall mellom 100 og 2024 
+               let tilfeldigWidth = 100 + Math.floor(Math.random() * 1024);
+               let tilfeldigHeight = 100 + Math.floor(Math.random() * 1024);
+               let tilfeldigBorderSize = 1 + Math.floor(Math.random() * 10);
+               console.log(tilfeldigBorderSize);
+               //setter width til tilfeldigTall 
+               container.style = 'width:' + tilfeldigWidth + "px;" +
+                                'height:' +tilfeldigHeight + "px;" +
+                                'border:' + tilfeldigBorderSize + "px solid gray;";
+                container.innerHTML = "Width: " + tilfeldigWidth + "px"
+                                    + "<br>Height: " + tilfeldigHeight + "px"
+                                    + "<br>Border: " + tilfeldigBorderSize + "px";
+
+
+            }
+        </script>
+    </body>
+</html>
