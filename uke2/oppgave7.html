@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Oppgave 7</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+        #container{
+            background-color: black;
+            width: 5px;
+            min-height: 5px;
+            color: white;
+            padding: 20px;
+            font-size:4vmin
+        }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <label for="widthSlider">Width</label>
+        <input id="widthSlider" type="range" min="1" max="1000" step="10" oninput="alterSquare()" />
+        <label for="heightSlider">Height</label>
+        <input id="heightSlider" type="range" min="1" max="1000" step="10" oninput="alterSquare()" />
+        
+
+        <div id="container"></div>
+        
+        <script>
+            let square = document.getElementById("container");
+            let widthSlider = document.getElementById("widthSlider");
+            let heightSlider = document.getElementById("heightSlider");
+            let width = parseInt(widthSlider.value);
+            let height = parseInt(heightSlider.value);
+
+            alterSquare();
+
+            function areal(){
+                return width * height;
+            }
+            function omkrets(){
+                return width * 2 + height * 2;
+               
+            }
+            function alterSquare(){
+                width = parseInt(widthSlider.value); //må oppdatere variablene når det oppstår oninput
+                height = parseInt(heightSlider.value);
+
+                square.style = "width:"+widthSlider.value + 'px;'+ //alters width
+                                "height:"+heightSlider.value + 'px;'; //alters height
+                
+                arealet = areal();
+                omkretsen = omkrets();
+
+                square.innerHTML =   "Height: " + heightSlider.value + ' px' +
+                                    "<br>Width: " + widthSlider.value + ' px' +
+                                    "<br>Areal: " + arealet + ' px' +
+                                    "<br>Omkrets: " + omkretsen + ' px';
+            }
+
+        </script>
+
+    </body>
+</html>
