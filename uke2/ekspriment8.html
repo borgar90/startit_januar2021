@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Tilfeldig fargevelger</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            #farge{
+                min-width: 50px;
+                min-height: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <h1>Tilfeldig Farge:</h1><br>
+        <h2 id="valgtFarge">Valgt Farge: </h2>
+        <div id="farge"></div>
+
+        <script>
+            let tall1;
+            let tall2;
+            let tall3;
+            let container = document.getElementById("farge");
+            let valgtFarge = document.getElementById("valgtFarge");
+            setColor();
+
+            function randomNum(){
+               tall1 = Math.floor(Math.random() * 256);
+               tall2 = Math.floor(Math.random() * 256);
+               tall3 = Math.floor(Math.random() * 256);
+            }
+            function setColor(){
+                randomNum();
+                container.style = "background-color:rgb("+tall1+","+tall2+","+tall3+ ")";    
+                print();
+            }
+            function print(){
+                valgtFarge.innerHTML += "RGB("+tall1 + ", " + tall2 + ", " + tall3 +")";
+            }
+
+        </script>
+    </body>
+</html>
