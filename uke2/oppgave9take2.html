@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            .stilig {
+                background-color: blueviolet;
+            }
+            .stilig2{
+                border: 1px solid black;
+            }
+            .stilig3{
+                padding: 30px;
+            }
+            .stilig4{
+                margin-left:20px;
+            }
+            .stilig5{
+                color:pink;
+            }
+            div.selected::before {
+                content: "🡆";
+            }
+
+            div.selected::after {
+                content: "🡄";
+            }
+        </style>
+    </head>
+    <body onload="init()">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <div id="page">
+            <div id="1" class="stilig selected" onclick="selected(this)">ads</div>
+            <div id="2" class="stilig2" onclick="selected(this)">asd</div>
+            <div id="3" class="stilig3" onclick="selected(this)">asd</div>
+            <div id="4" class="stilig4" onclick="selected(this)">asd</div>
+            <div id="5" class="stilig5" onclick="selected(this)">asd</div>
+        </div>
+        <label for="bg">Background:</label>
+        <input id="bg" type="checkbox" onchange="toggleChecked(this)" />
+        <label for="border">Border:</label>
+        <input id="border" type="checkbox" onchange="toggleChecked(this)" />
+        <label for="padding">Padding:</label>
+        <input id="padding" type="checkbox" onchange="toggleChecked(this)" />
+        <label for="margin">Margin:</label>
+        <input id="margin" type="checkbox" onchange="toggleChecked(this)" />
+        <label for="color">Color:</label>
+        <input id="color" type="checkbox" onchange="toggleChecked(this)" />
+
+
+        <script>
+            let div1 = document.getElementById("1");
+            let div2 = document.getElementById("2");
+            let div3 = document.getElementById("3");
+            let div4 = document.getElementById("4");
+            let div5 = document.getElementById("5");
+
+
+            function init (){
+                isChecked(div1);
+            }
+
+            function selected(element){
+                div1.classList.remove("selected");
+                div2.classList.remove("selected");
+                div3.classList.remove("selected");
+                div4.classList.remove("selected");
+                div5.classList.remove("selected");
+                element.classList.toggle("selected");
+                isChecked(element);
+            }
+
+            function isChecked(element){
+                if(element.classList.contains('stilig')){
+                    document.getElementById('bg').checked = true;
+                }else{
+                    document.getElementById('bg').checked = false;
+                }
+                if(element.classList.contains('stilig2')){
+                    document.getElementById('border').checked = true;
+                }else{
+                    document.getElementById('border').checked = false;
+                }
+                if(element.classList.contains('stilig3')){
+                    document.getElementById('padding').checked = true;
+                }else{
+                    document.getElementById('padding').checked = false;
+                }
+                if(element.classList.contains('stilig4')){
+                    document.getElementById('margin').checked = true;
+                }else{
+                    document.getElementById('margin').checked = false;
+                }
+                if(element.classList.contains('stilig5')){
+                    document.getElementById('color').checked = true;
+                }else{
+                    document.getElementById('color').checked = false;
+                }
+            }
+
+            function toggleChecked(element){
+                var bgIsChecked = document.getElementById('bg').checked;
+                var borderIsChecked = document.getElementById('border').checked;
+                var paddingIsChecked = document.getElementById('margin').checked;
+                var marginIsChecked = document.getElementById('padding').checked;
+                var colorIsChecked = document.getElementById('color').checked;
+                var selected = document.getElementsByClassName('selected');
+                for(i=0; i<selected.length; i++){
+                    selected[i].classList.toggle('stilig', bgIsChecked);
+                    selected[i].classList.toggle('stilig2', borderIsChecked);
+                    selected[i].classList.toggle('stilig3', paddingIsChecked);
+                    selected[i].classList.toggle('stilig4', marginIsChecked);
+                    selected[i].classList.toggle('stilig5', colorIsChecked);
+                }
+            }
+
+        </script>
+    </body>
+</html>

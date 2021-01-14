@@ -41,38 +41,120 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div id="1" onclick="clicked(this)">Bla bla bla</div>
-        <div id="2" class="selected" onclick="clicked(this)">assListest</div>
-        <label for="chk">Background:</label>
-        <input id="chk" type="checkbox" onchange="toggleStyle()" />
-        <label for="border"></label>
-        <input id="border" type="checkbox" onchange="toggleStyle()" />
-        <label for="padding"></label>
-        <input id="padding" type="checkbox" onchange="toggleStyle()" />
-        
-        <input id="chk" type="checkbox" onchange="toggleStyle()" />
-        <input id="chk" type="checkbox" onchange="toggleStyle()" />
-        <input id="chk" type="checkbox" onchange="toggleStyle()" />
+        <div id="1" class="stilig5" onclick="clicked(this)">Bla bla bla</div>
+        <div id="2" class="stilig" onclick="clicked(this)">assListest</div>
+        <div id="3" class="stilig2" onclick="clicked(this)">assListest</div>
+        <div id="4" class="stilig3" onclick="clicked(this)">assListest</div>
+        <div id="5" class="selected stilig4" onclick="clicked(this)">assListest</div>
+        <label for="bg">Background:</label>
+        <input id="bg" type="checkbox" onchange="toggleStyleBg(this)" />
+        <label for="border">Border:</label>
+        <input id="border" type="checkbox" onchange="toggleStyleBorder(this)" />
+        <label for="padding">Padding:</label>
+        <input id="padding" type="checkbox" onchange="toggleStylePadding(this)" />
+        <label for="margin">Margin:</label>
+        <input id="margin" type="checkbox" onchange="toggleStyleMargin(this)" />
+        <label for="color">Color:</label>
+        <input id="color" type="checkbox" onchange="toggleStyleColor(this)" />
         <script>
-            function clicked(a){
-                document.getElementById("1").classList = "";
-                document.getElementById("2").classList = "";
-                
-                a.classList = "selected";
-                toggleStyle();
+            let bg = document.getElementById("bg");
+            let border = document.getElementById("border");
+            let padding = document.getElementById("padding"); 
+            let margin = document.getElementById("margin");
+            let color = document.getElementById("color");
+
+            function init(){
+                    
             }
-        
-            function toggleStyle() {
-                var isChecked = document.getElementById('chk').checked;
-                selected = document.getElementsByClassName('selected');
-                for(i=0; i<selected.length; i++){
-                    selected[i].classList.toggle('stilig', isChecked);
+
+            function clicked(clickedDiv){
+                // document.getElementById("1").classList = "";
+                // document.getElementById("2").classList = "";
+                // document.getElementById("3").classList = "";
+                // document.getElementById("4").classList = "";
+                // document.getElementById("5").classList = "";
+                prevSelected = document.getElementsByClassName('selected');
+                if(prevSelected){ // .selected eksisterer fra før
+                    for(i=0; i<prevSelected.length;i++){
+                        prevSelected[i].classList.remove('selected'); //fjerner forje selected
+                    }
+                }
+                storedClasses = clickedDiv.classList;
+                 clickedDiv.classList.add("selected");
+                if (clickedDiv.classList.contains('stilig')){
+                    bg.checked = true;
+                }else{
+                    document.getElementById('bg').checked = false;
+                }
+                if (clickedDiv.classList.contains('stilig2')){
+                    document.getElementById('border').checked = true;
+                }else{
+                    document.getElementById('border').checked = false;
+                }
+                if (clickedDiv.classList.contains('stilig3')){
+                    document.getElementById('bg').checked = true;
+                }
+                if (clickedDiv.classList.contains('stilig4')){
+                    document.getElementById('bg').checked = true;
+                }
+                if (clickedDiv.classList.contains('stilig5')){
+                    color.checked =true;
+                }else{
+                    color.checked =false;
                 }
 
-                // document.getElementsByClassName('selected').classList.toggle('stilig', isChecked);
+                toggleStyleBg(bg);
+                toggleStyleColor(border);
+                toggleStylePadding(padding);
+                toggleStyleMargin(margin);
+                toggleStyleBorder(color);
+            }
+            function toggleStyleColor(element) {
+                var colorIsChecked = element.checked;
+                selected = document.getElementsByClassName('selected');
+                for(i=0; i<selected.length; i++){
+                    selected[i].classList.toggle('stilig5', colorIsChecked);
+                }
+
                 
             }
+            function toggleStyleMargin(element) {
+                var marginIsChecked = element.checked;
+                selected = document.getElementsByClassName('selected');
+                for(i=0; i<selected.length; i++){
+                    selected[i].classList.toggle('stilig4', marginIsChecked);
+                }
+
+                
+            }
+
+            function toggleStylePadding(element) {
+                var paddingIsChecked = element.checked;
+                selected = document.getElementsByClassName('selected');
+                for(i=0; i<selected.length; i++){
+                    selected[i].classList.toggle('stilig3', paddingIsChecked);
+                }
+
+                
+            }
+
+            function toggleStyleBg(element) {
+                var bgIsChecked = document.getElementById("bg").checked;
+               
+                selected = document.getElementsByClassName('selected');
+                for(i=0; i<selected.length; i++){
+                    selected[i].classList.toggle('stilig', bgIsChecked);
+                }
+
+                
+            }
+            function toggleStyleBorder(element){
+                var borderIsChecked = element.checked;
+                selected = document.getElementsByClassName('selected');
+                for(i=0; i<selected.length; i++){
+                    selected[i].classList.toggle('stilig2', borderIsChecked);
+                }
+            }
         </script>
-        <script src="" async defer></script>
     </body>
 </html>
