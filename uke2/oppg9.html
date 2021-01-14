@@ -15,6 +15,18 @@
             .stilig {
                 background-color: blueviolet;
             }
+            .stilig2{
+                border: 1px solid black;
+            }
+            .stilig3{
+                padding: 30px;
+            }
+            .stilig4{
+                margin-left:20px;
+            }
+            .stilig5{
+                color:pink;
+            }
             div.selected::before {
                 content: "🡆";
             }
@@ -30,7 +42,16 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="1" onclick="clicked(this)">Bla bla bla</div>
-        <div id="2" class="test" onclick="clicked(this)">assListest</div>
+        <div id="2" class="selected" onclick="clicked(this)">assListest</div>
+        <label for="chk">Background:</label>
+        <input id="chk" type="checkbox" onchange="toggleStyle()" />
+        <label for="border"></label>
+        <input id="border" type="checkbox" onchange="toggleStyle()" />
+        <label for="padding"></label>
+        <input id="padding" type="checkbox" onchange="toggleStyle()" />
+        
+        <input id="chk" type="checkbox" onchange="toggleStyle()" />
+        <input id="chk" type="checkbox" onchange="toggleStyle()" />
         <input id="chk" type="checkbox" onchange="toggleStyle()" />
         <script>
             function clicked(a){
@@ -38,11 +59,18 @@
                 document.getElementById("2").classList = "";
                 
                 a.classList = "selected";
+                toggleStyle();
             }
         
             function toggleStyle() {
                 var isChecked = document.getElementById('chk').checked;
-                document.getElementsByClassName('selected').classList.toggle('stilig', isChecked);
+                selected = document.getElementsByClassName('selected');
+                for(i=0; i<selected.length; i++){
+                    selected[i].classList.toggle('stilig', isChecked);
+                }
+
+                // document.getElementsByClassName('selected').classList.toggle('stilig', isChecked);
+                
             }
         </script>
         <script src="" async defer></script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Tick tac toe!</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            #page div{
+                border:1px solid black;
+                background-color: lightgray;
+               
+            }
+            #page {
+                display: grid;
+                grid-template-columns: 200px 200px 200px;
+                grid-template-rows:200px 200px 200px;
+                margin:auto;
+                width:600px;
+                text-align: center;
+            }
+            .x{
+                font-size: 150px;
+                color:hotpink;
+            }
+            .o{
+                font-size: 150px;
+                color:springgreen;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="page">
+            
+            <div id="1" class="tick" onclick="setX(this)"></div>
+            <div id="2" class="tick" onclick="setX(this)"></div>
+            <div id="3" class="tick" onclick="setX(this)"></div>
+            <div id="4" class="tick" onclick="setX(this)"></div>
+            <div id="5" class="tick" onclick="setX(this)"></div>
+            <div id="6" class="tick" onclick="setX(this)"></div>
+            <div id="7" class="tick" onclick="setX(this)"></div>
+            <div id="8" class="tick" onclick="setX(this)"></div>
+            <div id="9" class="tick" onclick="setX(this)"></div>
+        </div>    
+        <script>
+            divene = [];
+            function setX(clickedDiv){
+                if(clickedDiv.innerHTML==""){   
+                    clickedDiv.innerHTML = "<span class='x'>X</span>";
+                    setO();
+                
+                }
+            }
+
+            function setO(){
+                var rnd = 1 + Math.floor(Math.random() * 9);
+                var randomlySelectedDiv = document.getElementById(rnd);
+                divene = document.getElementsByClassName('tick');
+                var x = 0; 
+                if (randomlySelectedDiv.innerHTML == ""){ //random div er tom
+                     randomlySelectedDiv.innerHTML = "<span class='o'>O</span>";
+                 }else{
+                     for(i=0;i<divene.length;i++){ //alle divene
+                        if(divene[i].innerHTML == "" && x!=1){ //det finnes tom div og har ikke plassert 0 fra før 
+                            x = 1;
+                            setO();
+                         }
+                    }
+                    
+                 }
+            }
+        </script>
+    </body>
+</html>
