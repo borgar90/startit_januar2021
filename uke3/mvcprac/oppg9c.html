@@ -18,35 +18,30 @@
         <![endif]-->
         <div id="app"></div>
         <script>
-            var foreground = "black";
-            var bgcolor = "indianred";
+            //modell
+            var foreground = "black"; //fargene som er til å begynne med 
+            var bgcolor = "indianred"; //fargene som er til å begynne med 
             
             updateView();
 
-
-
-
+            //controller
             function endreFarge(){
-               // if (){ //selected bgcolor is black
-                    //set color to white. 
-                //    foreground = "white";
-                //}
+               
                 var mycolor = document.getElementById("myColor");
-                if (bgcolor == "Black" || bgcolor == "darkblue"){
-                    foreground = "white";
-                    console.log(foreground);
+                if (bgcolor == "Black" || bgcolor == "darkblue"){ //når bgfarge er sort eller mørkeblå så...
+                    foreground = "white"; //blir forgrunnsfargen satt til hvit
                 }else{
-                    foreground = "black";
+                    foreground = "black"; //eller så blir forgrunnsfargen satt til sort
                 }
-                updateView();
+                updateView(); //updater viewet
             }
 
 
-
-            function updateView(){
+            //view
+            function updateView(){ //opdaterer viewet og setter bgcolor til teksten i selected boks, ved change på select boxene 
                 app.innerHTML = `
                 
-                    <select id="myColor" onchange="bgcolor = this.options[this.selectedIndex].text;" size="5">
+                    <select id="myColor" onchange="bgcolor = this.options[this.selectedIndex].text;" size="5"> 
                         <option>Black</option>
                         <option>darkblue</option>
                         <option>lightgrey</option>
@@ -59,7 +54,6 @@
                     <div id="valgtFarge" style="color:${foreground}; background-color:${bgcolor};" onchange="endreFarge()"><br /> Her er den valgte bakgrunnsfargen.</div>
                 
                 `;
-                console.log(bgcolor);
             }
         </script>
     </body>
