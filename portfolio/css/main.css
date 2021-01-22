@@ -1,0 +1,179 @@
+body{
+    background-color: #efefef;
+}
+*{
+    padding:0px;
+    margin:0px;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+#nav{
+    padding-left:60%;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../img/tp2.png");
+    background-size: cover;
+    height: 50vh;
+}
+
+
+#mainContent{
+   display: grid;
+   grid-template-columns:  1fr  1fr;
+   grid-template-rows: 1fr;
+   grid-template-areas:
+     'cont img' ;
+   min-height: 400px;
+}
+.contentBox{
+    border: 1px solid gray;
+    justify-content: space-between;
+    max-width: 250px;
+    margin-top: 50px;
+    background-color: white;
+}
+
+.contentBox img{
+    max-width: 100%;
+    padding: 0px;
+}
+.contentBox h1, .contentBox p{
+    padding:10px;
+}
+.contentBox h1{
+    font-size: 2rem;
+}
+
+.featured{
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+48,000000+48,0a0809+100 */
+    display: grid;
+    grid-template-columns:  2fr  2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        'feat1 feat2' ;
+    
+}
+#featured1{
+    background-color: white;
+    min-height:250px;
+    grid-area: feat1;
+}
+#featured2{
+    background-color: #322d2f;
+    min-height:250px;
+    grid-area: feat2;
+    color: white;
+    padding: 20px;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+
+.floatRight{
+    right: 0px;
+    top: 0px;
+    grid-area:img;
+    background-color: white;
+}
+
+.floatLeft{
+    padding: 40px;
+    grid-area:cont;
+    background: #a81c1f;
+}
+
+.floatLeft h2, .floatLeft h6, .floatLeft p{
+    color:whitesmoke;
+    padding: 10px;
+}
+.floatLeft button{
+    background-color: #b91b1a;
+    border:1px solid whitesmoke;
+    color:whitesmoke;
+    padding:10px;
+}
+
+#trucks{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color:black;
+}
+.truck{
+    padding: 20px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+.truck h2{
+    color:#b91b1a;
+}
+.truck button{
+    background-color: #b91b1a;
+    padding: 5px;
+    color:white;
+    width:150px;
+    margin-top: 10px;
+    border: 1px solid whitesmoke;
+}
+.truck hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 100px;
+}
+
+#technologies{
+    min-height: 250px;
+    text-align: center;
+    padding-top: 50px;
+    
+}
+.flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.flexbox{
+    background-color: white;
+    width: 150px;
+}
+.flexbox img{
+    width: 150px;
+}
+
+
+
+
+
+#footer{
+   display: grid;
+   grid-template-columns:  1fr  1fr;
+   grid-template-rows: 1fr;
+   grid-template-areas:
+     'footer1 footer2' ;
+}
+#footer1{
+    background-color: #b91b1a;
+    min-height: 250px;
+    grid-area: footer1;
+}
+#footer2{
+    background-color: white;
+    min-height: 250px;
+    grid-area: footer2;
+    width: 100%;
+}
+
+#footer2 hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#footer2 button{
+    background: black;
+    color: white;
+    padding: 5px;
+    margin-top: 10px;
+    border: 1px solid white;
+}

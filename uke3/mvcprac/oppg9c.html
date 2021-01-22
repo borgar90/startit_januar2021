@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="app"></div>
+        <script>
+            var foreground = "black";
+            var bgcolor = "indianred";
+            
+            updateView();
+
+
+
+
+            function endreFarge(){
+               // if (){ //selected bgcolor is black
+                    //set color to white. 
+                //    foreground = "white";
+                //}
+                var mycolor = document.getElementById("myColor");
+                if (bgcolor == "Black" || bgcolor == "darkblue"){
+                    foreground = "white";
+                    console.log(foreground);
+                }else{
+                    foreground = "black";
+                }
+                updateView();
+            }
+
+
+
+            function updateView(){
+                app.innerHTML = `
+                
+                    <select id="myColor" onchange="bgcolor = this.options[this.selectedIndex].text;" size="5">
+                        <option>Black</option>
+                        <option>darkblue</option>
+                        <option>lightgrey</option>
+                        <option>lightgreen</option>
+                        <option>indianred</option>
+                    </select>
+
+                    <button class="button" onclick="endreFarge()">Velg</button>
+
+                    <div id="valgtFarge" style="color:${foreground}; background-color:${bgcolor};" onchange="endreFarge()"><br /> Her er den valgte bakgrunnsfargen.</div>
+                
+                `;
+                console.log(bgcolor);
+            }
+        </script>
+    </body>
+</html>

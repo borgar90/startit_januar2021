@@ -5,8 +5,8 @@
 }
 #page div{
     padding: 10px;
-    background:blue;
+    background:#a81c1f;
+    margin:50px;
     color:white;
-    width: 100%;
     text-align: center;
 }

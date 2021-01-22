@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            .firstOnLine{
+                clear: left;
+            }
+            .button {
+                float: left;
+                border: 1px solid black;
+                margin-left:5px;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="app"></div>
+        <script>
+            //kalkulator
+            var app = document.getElementById("app");
+
+            //model     
+            var screenInput = '';
+
+            //view  
+            viewFunction();
+            function viewFunction(){
+                var html = `
+                <div class="screen">${screenInput}</div>
+                <div onclick="updateScreen(this);"class="button firstOnLine">7</div>
+                <div onclick="updateScreen(this);"class="button">8</div>
+                <div onclick="updateScreen(this);"class="button">9</div>
+                <div onclick="updateScreenupdateScreen(this);"class="button">+</div>
+
+                <div onclick="updateScreen(this);"class="button firstOnLine">4</div>
+                <div onclick="updateScreen(this);"class="button">5</div>
+                <div onclick="updateScreen(this);"class="button">6</div>
+                <div onclick="updateScreen(this);"class="button">-</div>
+
+                <div onclick="updateScreen(this);"class="button firstOnLine" >1</div>
+                <div onclick="updateScreen(this);"class="button">2</div>
+                <div onclick="updateScreen(this);"class="button">3</div>
+                <div onclick="updateScreen(this);"class="button">*</div>
+                
+                <div onclick="calculate(this);"class="button firstOnLine">=</div>
+                <div onclick="updateScreen(this);"class="button">0</div>
+                <div onclick="clearScreen();"class="button">C</div>
+                <div onclick="updateScreen(this);"class="button">/</div>
+                `;
+                app.innerHTML = html;
+            }
+
+            function updateScreen(element){
+                screenInput += element.innerHTML;
+                viewFunction();
+            }
+
+            function clearScreen(){
+                screenInput = '';
+               viewFunction();
+            }
+
+            function calculate(element){
+                screenInput = eval(screenInput);
+                viewFunction();
+            }
+            //controller 
+
+        </script>
+    </body>
+</html>

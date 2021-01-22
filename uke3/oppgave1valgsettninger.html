@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body onload="updateView()">
+    <div id="app"></div>
+    <script>
+
+        //////////////////////////////
+        ///////       MODEL      ////
+        ////////////////////////////
+
+        var infoDiv; 
+        var txtDiv1;
+        var txtDiv2;
+        var txtDiv3 ;
+        var txt1 = "Per";
+        var txt2  = "Pål";
+        var txt3 = "Ole";
+        var app;
+        var infoText;
+
+        //////////////////////////////
+        ///////   Controller     ////
+        ////////////////////////////
+
+        
+        function findFirst() {
+             infoDiv = document.getElementById('info');
+             txtDiv1 = document.getElementById('txt1');
+             txtDiv2 = document.getElementById('txt2');
+             txtDiv3 = document.getElementById('txt3');
+             txt1 = txtDiv1.value;
+             txt2 = txtDiv2.value;
+             txt3 = txtDiv3.value;
+
+            infoText = '';
+
+            if (txt1 == txt2) infoText += 'Tekst 1 og 2 er like<br/>';
+            if (txt1 != txt2) infoText += '<del>Tekst 1 og 2 er like</del><br/>';
+
+            //if (txt1 == txt2) infoDiv.innerHTML += 'Tekst 1 og 2 er like<br/>';
+            //else infoDiv.innerHTML += '<del>Tekst 1 og 2 er like</del><br/>';
+
+            if (txt1 == txt3) infoText += 'Tekst 1 og 3 er like<br/>';
+            if (txt1 != txt3) infoText += '<del>Tekst 1 og 3 er like</del><br/>';
+            if (txt3 == txt2) infoText += 'Tekst 2 og 3 er like<br/>';
+            if (txt3 != txt2) infoText += '<del>Tekst 2 og 3 er like</del><br/>';
+
+            infoText += 'Om vi sorterer de tre tekstene, er denne den første:<br/>';
+            if (txt1 <= txt2) {
+                if (txt3 <= txt1) infoText += txt3;
+                else infoText += txt1;
+            } else {
+                if (txt3 <= txt2) infoText += txt3;
+                else infoText += txt2;
+            }
+            updateView();
+        }
+
+        //////////////////////////////
+        ///////   VIEW           ////
+        ////////////////////////////
+        updateView();
+        findFirst();
+        function updateView(){
+            let app = document.getElementById('app');
+            app.innerHTML = `
+                <p>Ferdighet 9b - Valgsetninger - Sammenligne to tekster</p>
+                <div id="info">${infoText}</div>
+                <p>Endre på tekstene! (Prøv også å fylle ut tall: 11, 101, 102)</p>
+                <input type="text" id="txt1"  value="${txt1}" /><br />
+                <input type="text" id="txt2"  value="${txt2}" /><br />
+                <input type="text" id="txt3"  value="${txt3}" /><br />
+                <button onclick="findFirst()">Registrer</button>        
+            `;
+        }
+    </script>
+</body>
+</html>

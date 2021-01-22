@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+            <div id="screen">Kode: </div>
+            <button onclick="addDigit(this)">1</button>
+            <button onclick="addDigit(this)">2</button>
+            <button onclick="addDigit(this)">3</button>
+            <button onclick="addDigit(this)">4</button>
+            <button onclick="addDigit(this)">5</button>
+            <button onclick="addDigit(this)">6</button>
+            <button onclick="addDigit(this)">7</button>
+            <button onclick="addDigit(this)">8</button>
+            <button onclick="addDigit(this)">9</button>
+            <button onclick="addDigit(this)">0</button>
+            
+        <script>
+            var screenDiv = document.getElementById("screen");
+            function addDigit(button){
+                screenDiv.innerHtml += button.innerHtml;
+            }
+        </script>
+    </body>
+</html>
