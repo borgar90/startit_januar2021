@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>QUnit Example</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css">
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+    <script src="lib.js"></script>
+    <script>
+        QUnit.test("Date - 'A Valid Day'", function (assert) {
+            const actual = containsValidDate('30.04.2021');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        QUnit.test("Date - 'Datoen ikke 10 karakterer'", function (assert) {
+            const actual = containsValidDate('17.01.20202');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        QUnit.test("Date - 'Datoen inneholder ikke riktig punktum'", function (assert) {
+            const actual = containsValidDate('1701.2020');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        QUnit.test("Date - 'Året består ikke av 4 siffer'", function (assert) {
+            const actual = containsValidDate('17.01.0');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        QUnit.test("Date - 'Måned består ikke av 2 siffer'", function (assert) {
+            const actual = containsValidDate('17.0.2020');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        QUnit.test("Date - 'Måned utenfor 1-12'", function (assert) {
+            const actual = containsValidDate('17.13.2020');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        QUnit.test("Date - 'dag er større en 31'", function (assert) {
+            const actual = containsValidDate('32.12.2020');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        QUnit.test("Date - 'dag er 31 for en mnd som ikke har 31 dager'", function (assert) {
+            const actual = containsValidDate('31.02.2020');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        QUnit.test("Date - 'dag er 30 og mnd er februar'", function (assert) {
+            const actual = containsValidDate('30.02.2020');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        
+        QUnit.test("Date - 'dag er 29 og mnd er februar og det er ikke skuddår'", function (assert) {
+            const actual = containsValidDate('29.02.2021');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("Date - '29 februar på skuddår'", function (assert) {
+            const actual = containsValidDate('29.02.2020');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+
+
+        /*
+        QUnit.test("Date - 'Valid Year'", function (assert) {
+            const actual = containsValidYear('17.01.2020');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        QUnit.test("Date - 'Valid Month'", function (assert) {
+            const actual = containsValidMnd('17.01.2020');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        QUnit.test("Date - 'Valid Day'", function (assert) {
+            const actual = containsValidDay('30.04.2021');
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        */
+        
+    </script>
+</body>
+</html>
