@@ -1,50 +1,50 @@
-function containsValidDate(text){
-   let isValidYear = containsValidYear(text); // tester om året er valid
-   let isValidMonth = containsValidMnd(text); // tester om mnd er valid
-   let isValidDay = containsValidDay(text); // Tester om dagen er valid
-   let isValidDateDots = isDateValidDots(text); //tester om dato har riktig punktsetting
-   let isDate10 =dateContains10(text); //tester om dato inneholder 10 characters
+function containsValidDate(dato){
+   let isValidYear = containsValidYear(dato); // tester om året er valid
+   let isValidMonth = containsValidMnd(dato); // tester om mnd er valid
+   let isValidDay = containsValidDay(dato); // Tester om dagen er valid
+   let isValidDateDots = isDateValidDots(dato); //tester om dato har riktig punktsetting
+   let isDate10 =dateContains10(dato); //tester om dato inneholder 10 characters
    if(isValidDateDots && isValidDay && isDate10 && isValidMonth && isValidYear){
        return true;
    }
 }
 
-function containsValidMnd(text){
+function containsValidMnd(dato){
     let mnd = "";
 
-    for (i=3; i<5; i++){
-        mnd += text.charAt(i);
+    for (i=3; i<5; i++){ 
+        mnd += dato.charAt(i); //finner alle tallene som har med mnd å gjøre
     }
     if(mnd > 0 && 
-     mnd < 13 && mnd.length === 2){
-      return true;
+     mnd < 13 && mnd.length === 2){ //mnd er mellom 0 og 13 altså 1-12, og lengden på mnd string er 2 
+      return true; //mnd er valid
     }
 }
 
-function containsValidDay(text){
+function containsValidDay(dato){
     let year = "";
     let dag = "";
     let montIsFebruary = false;
     let mnd = "";
 
     for (i=3; i<5; i++){
-        mnd += text.charAt(i);
+        mnd += dato.charAt(i); //finner mnd-tallene
     }
-    if(mnd === "02"){
+    if(mnd === "02"){ //mnd er februar
         montIsFebruary = true;
     }
     for (i=6; i<10; i++){ //finner året i stringen. 
-        year += text.charAt(i);
+        year += dato.charAt(i);
     }
     for (i=0; i<2; i++){ //dagen i stringen
-        dag += text.charAt(i);
+        dag += dato.charAt(i);
     }
     
     if(montIsFebruary && isLeapYear(year)){ // mnd er februar og det er skudår
         if(dag >= 1 && dag <= 29 && dag.length === 2){
-            return true;
+            return true; //dagen er i februar og er valid.
         }
-    }else if(montIsFebruary){
+    }else if(montIsFebruary){ 
         if(dag >=1 && dag <=28){
             return true; //mnd er februar og er ikke skuddår, så dagene er gyldige mellom 1 og 28
         }
@@ -62,10 +62,10 @@ function containsValidDay(text){
 
 }
 
-function containsValidYear(text){
+function containsValidYear(dato){
     let year = "";
     for (i=6; i<10; i++){ //finner året i stringen. 
-        year += text.charAt(i);
+        year += dato.charAt(i);
     }
     if(year.length === 4 && 
         year>= '0000' && 
@@ -74,16 +74,16 @@ function containsValidYear(text){
         }
 }
 
-function dateContains10(text){
-    if(text.length === 10){
+function dateContains10(dato){
+    if(dato.length === 10){
         return true;
     }  
 }
-function isDateValidDots(text){
+function isDateValidDots(dato){
    if(
-        text.charAt(2) === "." &&
-        text.charAt(5) === "."
-        ){  //texten må ha lengde 10  og punktum på 3 og 6 plass i stringen
+        dato.charAt(2) === "." &&
+        dato.charAt(5) === "."
+        ){  //datoen må ha lengde 10  og punktum på 3 og 6 plass i stringen
         
         return true;
     }
