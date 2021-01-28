@@ -6,6 +6,8 @@ function containsValidDate(dato){
    let isDate10 =dateContains10(dato); //tester om dato inneholder 10 characters
    if(isValidDateDots && isValidDay && isDate10 && isValidMonth && isValidYear){
        return true;
+   }else{
+       return false; 
    }
 }
 
