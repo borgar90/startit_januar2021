@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Tre på rad</title>
+    <style type="text/css">
+        div {
+            user-select: none;
+        }
+
+            div.cell {
+                background-color: lightgray;
+                width: 100px;
+                height: 100px;
+                float: left;
+                margin: 2px;
+                font-size: 500%;
+                font-family: helvetica;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            div.first {
+                clear: left;
+            }
+
+            div.coloro {
+                color: blue;
+            }
+
+            div.colorx {
+                color: green;
+            }
+    </style>
+</head>
+<body>
+    <div id="board"></div>
+
+    <script type="text/javascript">
+    //hjelpevariabler for view og controller 
+    let boardDiv = document.getElementById("board");
+
+    //model 
+    let board = ['', '', '', '', '', '', '', '', ''];
+
+    //view
+    show();
+    function show(){
+        let html= ``;
+        for (let i = 0; i < 9; i++){
+            let first = i % 3 == 0? 'first' : '';
+            html +=`<div onclick="setX(${i})" id="${i}" class="cell color${board[i]} ${first}"> ${board[i]}</div>`;
+        }
+        boardDiv.innerHTML = html; 
+    }
+
+    function setX(index){
+        if(board[index] === ''){
+            board[index] = 'x';
+            checkWinning(index);
+            setO();
+        }
+    }
+
+    function checkWinning (i){
+        
+        if (i === 0){
+             
+            if(board[4] === "x" && board[8] === "x" || board[3] === "x" && board[6] === "x"  ||  board[1] === "x" && board[2] === "x" ){
+                //win
+                console.log("win");
+                //win
+            }else if(board[4] === "o" && board[8] === "o" || board[3] === "o" && board[6] === "o"  ||  board[1] === "o" && board[2] === "o" ){
+                //loss
+                console.log("loss");
+            }
+        } else if(i === 1){
+            if(board[4] === "x" && board[7] === "x" || board[0] === "x" && board[2] === "x"  ){
+                //win
+                console.log("win");
+                //win
+            }else if(board[4] === "o" && board[7] === "o" || board[0] === "o" && board[2] === "O"  ){
+                 //loss
+                 console.log("loss");
+            }
+        }
+        else if(i === 2){
+            if(board[0] === "x" && board[2] === "x" || board[6] === "x" && board[4] === "x" || board[5] === "x" && board[8] === "x"   ){
+                //win
+                console.log("win");
+                //win
+            }else if(board[0] === "o" && board[2] === "o" || board[6] === "o" && board[4] === "o" || board[5] === "o" && board[8] === "o"   ){
+                console.log("loss");
+            }
+
+        }
+        else if(i === 3){
+            if(board[0] === "x" && board[6] === "x" || board[4] === "x" && board[5] === "x"){
+                //win
+                console.log("win");
+                //win
+            } else if(board[0] === "o" && board[6] === "o" || board[4] === "o" && board[5] === "o"){
+                console.log("loss");
+            }
+        }
+        else if(i === 4){
+            if(board[1] === "x" && board[8] === "x" || board[2] === "x" && board[6] === "x" || board[0] === "x" && board[8] === "x" || board[3] === "x" && board[5] === "x"  ){
+                //win
+                console.log("win");
+                //win
+            } else  if(board[1] === "o" && board[8] === "o" || board[2] === "o" && board[6] === "o" || board[0] === "o" && board[8] === "o" || board[3] === "o" && board[5] === "o"  ){
+                console.log("loss");   
+            }
+        }
+        else if(i === 5){
+            if(board[2] === "x" && board[8] === "x" || board[3] === "x" && board[4] === "x"){
+                //win
+                console.log("win");
+                //win
+            } else if(board[2] === "o" && board[8] === "o" || board[3] === "o" && board[4] === "o"){
+                console.log("loss");
+            }
+        }
+        else if(i === 6){
+            if(board[2] === "x" && board[4] === "x" || board[0] === "x" && board[3] === "x" || board[7] === "x" && board[8] === "x"){
+                //win
+                console.log("win");
+                //win
+            } else if(board[2] === "o" && board[4] === "o" || board[0] === "o" && board[3] === "o" || board[7] === "o" && board[8] === "o"){
+                console.log("loss");
+            }
+        }
+        else if(i === 7){
+            if(board[6] === "x" && board[8] === "x" || board[1] === "x" && board[4] === "x"){
+                //win
+                console.log("win");
+                //win
+            }else  if(board[6] === "o" && board[8] === "o" || board[1] === "o" && board[4] === "o"){
+            console.log("loss");
+            }
+        }
+        else if(i === 8){
+            if(board[0] === "x" && board[4] === "x" || board[2] === "x" && board[5] === "x" || board[6] === "x" && board[7] === "x"){
+                //win
+                console.log("win");
+                //win
+            } else if(board[0] === "o" && board[4] === "o" || board[2] === "o" && board[5] === "o" || board[6] === "o" && board[7] === "o"){
+                console.log("loss");
+            }
+        }
+    }
+    function setO(){
+        let blankIndexes = Array.from(board.keys()).filter(i => board[i] === '');
+        if (blankIndexes.length === 0) return;
+        let random = Math.floor(Math.random()* blankIndexes.length);
+        let blankIndexe = blankIndexes[random];
+        board[blankIndexe] = 'o';
+        checkWinning(blankIndexe);
+        show();
+    }
+    </script>
+</body>
+</html>

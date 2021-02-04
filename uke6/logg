@@ -1,0 +1,12 @@
+* lagt til funksjonen  function endreValgtStolpe(inputValue)
+- denne funksjonen har som formål å endre valgt stolpe.
+
+* lagt til funksjonen function leggTilNyStolpe(inputValue)
+- denne funksjonen har som formål å legge til ny stolpe. 
+
+*****Known buggs *****
+- fargene skifter seg når man sletter en bar, fordi fargene regnes ut i fra plasseringen i array. Skal jeg forandre på dette eller skal jeg ha det slik. 
+
+///////TODO////////
+
+- skrive unit tester. 

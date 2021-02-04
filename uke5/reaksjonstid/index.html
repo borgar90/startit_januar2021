@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Reaksjonstid</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            #app{
+                display: flex;
+                flex-wrap: wrap;
+
+            }
+            .circle{
+                flex: 1 0 18%; /* The important bit. This percentage decides your columns. 
+                The percent can be px. It just represents your minimum starting width.
+                */
+                margin: 5px;
+                background: tomato;
+                height: 50px;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+            }
+            .lightOn{
+                background: yellow;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="app"></div>
+        <script>
+            selectedLampIndex = '';
+            turnOnLight();
+            updateView();
+            function updateView(){
+                let html =``;
+                for(i=0; i<25; i++){
+                    if(i === selectedLampIndex){
+                        html += `<div onclick="turnOnLight()" class="circle lightOn"></div>`;    
+                    }else{
+                        html += `<div class="circle"></div>`;
+                    }
+                }
+                document.getElementById("app").innerHTML = html;
+            }
+            function turnOnLight(){
+                var startTime = new Date().getTime();
+                var finishTime = new Date().getTime();
+                var spentMilliseconds = Math.floor(finishTime - startTime);
+                var spentSeconds = spentMilliseconds / 1000;
+                
+                selectedLampIndex = Math.floor(Math.random() * 25);
+                console.log(selectedLampIndex);
+                updateView();
+            }
+        </script>
+    </body>
+</html>

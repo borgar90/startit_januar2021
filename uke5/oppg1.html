@@ -36,8 +36,11 @@
 
                 function multiplyWith(element){
                     
-                    for (i=0; i<element.value; i++){
-                       console.log(i);
+                    for (i=0; i <= element.value; i++){
+                       for (j=0; j <= element.value; j++){
+                        multiplicationMatrix.push(i * j );
+                       } 
+                      
                     }
                     show();   
                 }
