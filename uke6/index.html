@@ -35,6 +35,24 @@
             const expected = true;
             assert.equal(actual, expected);
         });
+
+        QUnit.test("Endre stolpe", function (assert) {
+            const actual = endreValgtStolpe(4);
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("Velge stolpe 1", function (assert) {
+            const actual = selectBar(4);
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        QUnit.test("Velge stolpe 2", function (assert) {
+            const actual = selectBar(3);
+            const expected = true;
+            assert.equal(actual, expected);
+        });
+        
     </script>
     </body>
 </html>

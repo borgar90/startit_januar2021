@@ -41,10 +41,10 @@
     
      if (index == barNo){ // er selected bar
          
-         return `<rect id="${barNo}"" style="${style}" onclick="selectBar(this)" width="${width}" height="${height}"
+         return `<rect id="${barNo}"" style="${style}" onclick="selectBar(this.id)" width="${width}" height="${height}"
                          x="${x}" y="${y}" fill="${color}"></rect>`;
      }else{ // er ikke selevted bar
-         return `<rect id="${barNo}"  onclick="selectBar(this)" width="${width}" height="${height}"
+         return `<rect id="${barNo}"  onclick="selectBar(this.id)" width="${width}" height="${height}"
                          x="${x}" y="${y}" fill="${color}"></rect>`;
      }
      
@@ -59,20 +59,24 @@
  
  function selectBar(element){
    
-     element.attributes.strokeWidth = 1;
      style = "stroke-width:1;stroke:rgb(0,0,0);"
-     if(index != element.id){ //selected a bar
-         index = element.id ;
+     if(index != element){ //selected a bar
+         index = element ;
          disabled = "";
-         valgtStolpe = element.id;
+         valgtStolpe = element;
+         
+            show()
+         return true
      }else{ //deselected bar
          style = "";
          index = null;
          disabled = "disabled";
          valgtStolpe = "ingen";
+         
+        show()
+        return false
      }
       
-     show()
  }
 
  function leggTilNyStolpe(inputValue){
@@ -91,13 +95,14 @@
      numbers[i] = inputValue;
      console.log(numbers[i]);
      show();
+     return true
      }else{
          alert("Tallverdien må være mellom 1 og 10");
-     }
+        return false
+    }
  }
 
  function removeBar(i){
-     
      numbers.splice(i, 1)
      show();
      return true; 
