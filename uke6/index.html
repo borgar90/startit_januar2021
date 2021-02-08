@@ -26,14 +26,15 @@
         <script src="mvc.js"></script>
         <script>
         QUnit.test("fjerne stolpe", function (assert) {
-            const actual = removeBar(4);
-            const expected = true;
-            assert.equal(actual, expected);
+            removeBar(4);
+            const actual = numbers[4];
+            const expected = undefined;
+            assert.deepEqual(actual, expected);
         });
         QUnit.test("Legge til ny stolpe", function (assert) {
             const actual = leggTilNyStolpe(4);
-            const expected = true;
-            assert.equal(actual, expected);
+            const expected = numbers.length;
+            assert.equal(5, expected);
         });
 
         QUnit.test("Endre stolpe", function (assert) {

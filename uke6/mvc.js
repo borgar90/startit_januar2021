@@ -3,7 +3,6 @@
         
  // model
  let numbers = [7, 3, 1, 5, 8];
- let chosenBar; // Variabel for hvilken stolpe som er valgt
  let inputValue = 0; // Variabel for hva som er skrevet i input-feltet
  let style;
  let index =0;
@@ -23,7 +22,7 @@
          Valgt stolpe: <i>${valgtStolpe}</i>
          <br />
          Verdi:
-         <input id="input" type="number" min="1" max="10" oninput="inputValue = this.value;" value="${inputValue}" />
+         <input id="input" type="number" min="1" max="10" oninput="inputValue = parseInt(this.value) ;" value="${inputValue}" />
          <button onclick="leggTilNyStolpe(inputValue)">Legg til stolpe</button>
          <button ${disabled} onclick="endreValgtStolpe(inputValue)">Endre valgt stolpe</button><br />
          <button ${disabled} onclick="removeBar(index - 1)">Fjerne valgt stolpe</button>
@@ -39,7 +38,7 @@
      let y = 60 - height;
      let color = calcColor(1, 10, barNo);
     
-     if (index == barNo){ // er selected bar
+     if (index == barNo){ // er en selected bar
          
          return `<rect id="${barNo}"" style="${style}" onclick="selectBar(this.id)" width="${width}" height="${height}"
                          x="${x}" y="${y}" fill="${color}"></rect>`;
@@ -90,8 +89,9 @@
  }
 
  function endreValgtStolpe(inputValue){
-     if(inputValue<= 10 && inputValue > 0){
-     let i = index -1 ;
+     console.log("inputvalue" + inputValue);
+     if(inputValue<= 10 && inputValue > 0){ //input er 1-10
+     let i = index -1 ; //trekker 1 fra index
      numbers[i] = inputValue;
      console.log(numbers[i]);
      show();
@@ -103,8 +103,8 @@
  }
 
  function removeBar(i){
-     numbers.splice(i, 1)
-     show();
+     numbers.splice(i, 1) //removes 1 char from place i in the array
+     show(); // updates view()
      return true; 
  }
  
