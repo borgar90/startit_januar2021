@@ -31,11 +31,9 @@ function leggTilNyStolpe(inputValue){
 }
 
 function endreValgtStolpe(inputValue){
-    console.log("inputvalue" + inputValue);
     if(inputValue<= 10 && inputValue > 0){ //input er 1-10
     let i = index -1 ; //trekker 1 fra index
     numbers[i] = inputValue;
-    console.log(numbers[i]);
     show();
     return true
     }else{

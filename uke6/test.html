@@ -25,25 +25,30 @@
         
         <script src="controller.js"></script>
         <script>
+            //dummy modell
         let index =0;
-        let numbers= [7, 3, 1, 5, 8];
-        var inputValue;
+        let numbers;
+            //dummy view
         function show() { }    
 
-
+        ////////////unit tests ////////////////
         QUnit.test("fjerne stolpe", function (assert) {
-            removeBar(4);
-            const actual = numbers[4];
-            const expected = undefined;
+            numbers= [7, 3, 1, 5, 8];
+            removeBar(4); // fjerner stolpe nr 5
+            const actual = numbers[4]; // skal være undefined fordi den er slettet
+            const expected = undefined; 
             assert.deepEqual(actual, expected);
+            assert.equal(numbers.length, 4); // lengden på array skal nå være 4
         });
         QUnit.test("Legge til ny stolpe", function (assert) {
+            numbers= [7, 3, 1, 5, 8];
             const actual = leggTilNyStolpe(4);
             const expected = numbers.length;
-            assert.equal(5, expected);
+            assert.equal(6, expected); // lengden skal nå være 6. 
         });
 
         QUnit.test("Endre stolpe", function (assert) {
+            numbers= [7, 3, 1, 5, 8];
             index = 3;  // stolpe nr 3 er valgt 
             endreValgtStolpe(4); // endre stolpe nr 3 til verdien 4
             const actual = numbers[index - 1]; // minus en fordi den teller fra 0 i array. 
@@ -52,12 +57,13 @@
         });
 
         QUnit.test("Velge stolpe 1", function (assert) {
-           
+            numbers= [7, 3, 1, 5, 8];
             const actual = selectBar(4);
             const expected = 4;
             assert.equal(actual, expected);
         });
         QUnit.test("Velge stolpe 2", function (assert) {
+            numbers= [7, 3, 1, 5, 8];
             const actual = selectBar(3);
             const expected = 3;
             assert.equal(actual, expected);

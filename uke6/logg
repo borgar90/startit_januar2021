@@ -14,5 +14,5 @@
 
 * lagt til unittester for kontrollerfunksjonene
 
-* separert ut unit-testing til egen fil. 
+* separert ut unit-testing til egen fil. +++ laget en dummy view og dummy modell. 
 * separert modell view og controller til forskjellige filer. 
