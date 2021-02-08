@@ -13,3 +13,6 @@
 
 
 * lagt til unittester for kontrollerfunksjonene
+
+* separert ut unit-testing til egen fil. 
+* separert modell view og controller til forskjellige filer. 

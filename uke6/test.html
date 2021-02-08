@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="content">
+        </div>
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
+        <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+        
+        <script src="controller.js"></script>
+        <script>
+        let index =0;
+        let numbers= [7, 3, 1, 5, 8];
+        var inputValue;
+        function show() { }    
+
+
+        QUnit.test("fjerne stolpe", function (assert) {
+            removeBar(4);
+            const actual = numbers[4];
+            const expected = undefined;
+            assert.deepEqual(actual, expected);
+        });
+        QUnit.test("Legge til ny stolpe", function (assert) {
+            const actual = leggTilNyStolpe(4);
+            const expected = numbers.length;
+            assert.equal(5, expected);
+        });
+
+        QUnit.test("Endre stolpe", function (assert) {
+            index = 3;  // stolpe nr 3 er valgt 
+            endreValgtStolpe(4); // endre stolpe nr 3 til verdien 4
+            const actual = numbers[index - 1]; // minus en fordi den teller fra 0 i array. 
+            const expected = 4;
+            assert.deepEqual(actual, expected);
+        });
+
+        QUnit.test("Velge stolpe 1", function (assert) {
+           
+            const actual = selectBar(4);
+            const expected = 4;
+            assert.equal(actual, expected);
+        });
+        QUnit.test("Velge stolpe 2", function (assert) {
+            const actual = selectBar(3);
+            const expected = 3;
+            assert.equal(actual, expected);
+        });
+        
+    </script>
+    </body>
+</html>
