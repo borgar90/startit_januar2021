@@ -1,6 +1,6 @@
 function selectBar(element){
    
-    style = "stroke-width:1;stroke:rgb(0,0,0);"
+    style = "stroke-width:1;stroke:rgb(0,0,0);" //gjør klar style variablen. 
     if(index != element){ //selected a bar
         index = element ;
         disabled = "";
@@ -22,7 +22,7 @@ function selectBar(element){
 
 function leggTilNyStolpe(inputValue){
     if(inputValue<= 10 && inputValue > 0){
-        numbers.push(inputValue);
+        numbers.push(inputValue); // legger til ny stolpe på slutten av arrayet. 
        show();
        return true
     }else{
