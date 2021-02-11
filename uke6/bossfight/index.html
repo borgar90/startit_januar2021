@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+
+            #bossHealthContainer{
+                width:100px;
+                background: black;
+                height: 20px;
+            }
+            #bossHealth{
+                width:100%; 
+                background:red;
+                height: 18px;
+            }
+            #playerHealthContainer{
+                width:100px;
+                background: black;
+                height: 20px;
+            }
+            #playerHealth{
+                width:100%; 
+                background:red;
+                height: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app"></div>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script >
+            let app = document.getElementById("app")
+            //model
+            let boss = {};
+            boss.bossHealth = 100;
+            boss.dmg = 3; 
+            let player = {};
+            player.playerHealth = 100; 
+            player.dmg = 5;
+            player.xp = 0;
+            player.coinPurse = 0;
+            let bossStyle ="";
+            let playerStyle="";
+            let winnerText ="";
+            let playerXp = 0;
+            let levelsToCome= [100, 300, 500, 800, 1000, 1500];
+            let nextLvl ="";
+            let disabled = "";
+            let disabled2 = "disabled";
+            //view
+            updateView();
+            function updateView(){
+                let html = ``;
+                
+                html += ` <p>Boss:</p>
+                    <div id="bossHealthContainer">
+                       
+                        <div style="${bossStyle}" id="bossHealth"></div>
+                    </div> <p>Player:</p>
+                    <div id="playerHealthContainer">
+                       
+                        <div style="${playerStyle}" id="playerHealth"></div>
+                    </div>
+                    <h2>${winnerText}</h2>
+                    <p>Coin: ${player.coinPurse}</p>
+                    <button ${disabled} onclick="attackBoss();">Attack</botton>${nextLvl}
+                    <button onclick="heal()">Heal for 300 coin</button>    
+                `;  
+                app.innerHTML = html;    
+            }
+
+            
+            //controller
+
+            
+            function attackBoss(){
+                if (boss.bossHealth > 0){
+                    boss.bossHealth = boss.bossHealth - player.dmg;
+                    console.log(player.dmg + " Player dmg");
+                }
+                if(boss.bossHealth > 0){
+                    bossStyle = "width:" + boss.bossHealth + "%;";
+                    bossAttack();
+                }else{
+                    bossStyle = "width:0" + "%;";
+                    winnerText = `You've won!`;
+                    win();
+                    updatePlayerXp();
+                    loot();
+                }
+                updateView();
+            }   
+            
+
+            function bossAttack(){
+                if(player.playerHealth > 0){
+                    criticalStrike();
+                    player.playerHealth = player.playerHealth - boss.dmg;
+                    boss.dmg = 3;
+                    playerStyle = "width:" + player.playerHealth + "%;"; 
+                }else{
+                    playerStyle = "width:0" + "%;";
+                    winnerText = `You've lost!`;
+                }
+                updateView();
+            }
+
+            function criticalStrike(){
+                let rnd = Math.floor(Math.random() * 3);
+                if(rnd == 1){
+                    boss.dmg = 5 + rnd; 
+                    winnerText = "Critical by boss";
+                }else{
+                    winnerText = "Boss afflicted you with " + boss.dmg +"damage";
+                }
+            }
+            function updatePlayerXp(){
+                player.xp += 100;
+                for(lvl of levelsToCome){
+                    if (lvl == player.xp){
+                        levelUp();
+                        console.log("level up");
+                    }
+                }
+            }
+
+            function levelUp (){
+                let lvlup = false;
+                for(i = 0; i<levelsToCome.length; i++){
+                    if(player.xp >= levelsToCome[i]){
+                        //lvlup
+                        lvlup = true;
+                        levelsToCome.splice(i, 1);
+                    }
+                }
+                if(lvlup){
+                    player.dmg += 3;
+                    winnerText += " Level up: damage increased by 3";
+                    lvlup = false;
+                }
+                updateView();
+            }
+            function loot(){
+                console.log("lvl to come " + levelsToCome[0])
+                player.coinPurse += 1*levelsToCome[0];
+            }
+            
+            function win (){
+                disabled2 ="";
+                nextLvl = `<button ${disabled2} onclick="initLvl()">Next Level</button>`;
+                disabled='disabled';
+                updateView();
+            }
+            function heal(){
+                if(player.coinPurse >= 300){
+                    player.coinPurse = player.coinPurse -300;
+                    player.playerHealth = 100;
+                playerStyle = "width:" + player.playerHealth + "%;"; 
+                updateView();
+                }
+            }
+            function initLvl(){
+                boss.bossHealth = 100;
+                disabled = "";
+                style="";
+                disabled2 = "disabled";
+                bossStyle = "width:" + boss.bossHealth + "%;";
+                playerStyle = "width:" + player.playerHealth + "%;"; 
+                updateView();
+            }
+
+        </script>
+    </body>
+</html>

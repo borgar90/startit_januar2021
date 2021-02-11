@@ -28,13 +28,17 @@
      let height = number * 10;
      let y = 60 - height;
      let color = calcColor(1, 10, barNo);
-    
+     disabled = valgtStolpe != "ingen" ? '' : 'disabled';
      if (index == barNo){ // er en selected bar
-         
-         return `<rect id="${barNo}"" style="${style}" onclick="selectBar(this.id)" width="${width}" height="${height}"
+        style = "stroke-width:1;stroke:rgb(0,0,0);"; //gjør klar style variablen. 
+       
+        return `<rect id="${barNo}"" style="${style}" onclick="selectBar(${barNo})" width="${width}" height="${height}"
                          x="${x}" y="${y}" fill="${color}"></rect>`;
+
      }else{ // er ikke selevted bar
-         return `<rect id="${barNo}"  onclick="selectBar(this.id)" width="${width}" height="${height}"
+        style = ""; //slår av style
+        
+         return `<rect id="${barNo}"  onclick="selectBar(${barNo})" width="${width}" height="${height}"
                          x="${x}" y="${y}" fill="${color}"></rect>`;
      }
      

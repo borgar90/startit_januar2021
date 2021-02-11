@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Reaksjonstid</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            #app{
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);    
+            }
+            .lamp{
+                background-color: aqua;
+                border-radius: 50%;
+                width:50px;
+                height: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="app"></div>
+        <script >
+            let app = document.getElementById("app");
+            //model 
+
+            //view
+            updateView();
+            function updateView(){
+                let html=``;
+                for(i=0; i<25; i++){
+                    html += `<div class="lamp"></div>`;
+                }
+                app.innerHTML =html;
+            }
+
+            //controller
+
+
+        </script>
+    </body>
+</html>

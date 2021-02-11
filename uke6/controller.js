@@ -1,19 +1,16 @@
 function selectBar(element){ // funksjon for å velge stolpe
    
-    style = "stroke-width:1;stroke:rgb(0,0,0);" //gjør klar style variablen. 
+    
     if(index != element){ //selected a bar
         index = element ; // setter indexvariabelen til element. Klikker man på samme baren er index = element, og vi nullstiller
-        disabled = ""; // slår av disabled på knappene
         valgtStolpe = element; //opdaterer valgt stolpe teksten med valgt stolpe
-        
-           show()
+        show();
         return index // returnerer index når bar er valgt.
     }else{ //deselected bar
-        style = ""; //slår av style
         index = null; //ingen bar er selected så index skal være null.
-        disabled = "disabled"; //slår av knappene
         valgtStolpe = "ingen"; //oppdaterer teksten til ingen stolpe valgt. 
-       show() // refresher viewet
+       
+       show(); // refresher viewet
        return false // til unittesting, returnerer false når ingen bar er valgt
     }
      
