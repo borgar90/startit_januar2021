@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="txt"></div>
+    <script>
+        var txt = document.getElementById('txt');
+
+        animate();
+
+        async function animate() {
+            try {
+                await letter('T', 300);
+                await letter('e', 300);
+                await letter('?', 300);
+                await letter('j', 300);
+                await letter('e', 300);
+            }
+            catch{
+                txt.innerHTML = "Error!!!";
+            }
+        }
+
+        async function animate2() {
+            var someText = "Hei på deg din blei";
+            try {
+                for (let i = 0; i < someText.length; i++)
+                    await letter(someText[i], 700 - i * 40);
+            }
+            catch{
+                txt.innerHTML = "Error!!!";
+            }
+        }
+
+        function letter(myTxt, millis) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    if (myTxt == '?') reject();
+                    txt.innerHTML += myTxt;
+                    resolve();
+                }, millis);
+            });
+        }
+
+
+    </script>
+</body>
+</html>

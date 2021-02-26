@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="app"></div>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>     
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBe9ycqn14U0qWrKuvFrBDLQQfekqHSeDs",
+            authDomain: "chat-f68ac.firebaseapp.com",
+            projectId: "chat-f68ac",
+            storageBucket: "chat-f68ac.appspot.com",
+            messagingSenderId: "612448949046",
+            appId: "1:612448949046:web:ef0f47db7d82df607b5997"
+        };
+         
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+        let app = document.getElementById("app");
+        var chatCollection =  db.collection('chat');
+       
+        updateView();
+        function getData(){
+            
+        }
+        function updateView(){
+            let html = ``;
+            
+            chatCollection.orderBy('Date').onSnapshot(
+            function (collectionSnapshot){
+                html += '<div id="chat">';
+                collectionSnapshot.forEach(
+                   
+                    function (messageItemSnapshot){
+                        html += '<div id="chatmessage">';
+                        let messageItem = messageItemSnapshot.data();
+                        html += messageItem.Message +' ';
+                        html += messageItem.Date;
+                        html += `<br>`;
+                        html += '</div>';
+                    })
+                
+                app.innerHTML += html;
+            });
+            html += '</div>';
+            html += `<input type="text" onkeydown="if(event.keyCode === 13) add(this)">`;
+            console.log(html);
+            app.innerHTML += html;
+           
+        }
+        function add(inputTag){
+            let msg = inputTag.value;
+            let date = new Date();
+            chatCollection.add({Message: msg, Date: date});
+        }
+
+        </script>
+    </body>
+</html>
