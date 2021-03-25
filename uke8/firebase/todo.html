@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            *{
+                margin:0px; 
+                padding:0px;
+            }
+            .todo{
+                display:grid; 
+                grid-template-columns: repeat(2, 150px);
+            }
+
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="app"></div>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>     
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAG2bfLHvXDKzmUUcDBkgai1GCeyF4wqu8",
+            authDomain: "todo-1f42c.firebaseapp.com",
+            projectId: "todo-1f42c",
+            storageBucket: "todo-1f42c.appspot.com",
+            messagingSenderId: "97016709175",
+            appId: "1:97016709175:web:2a816274f75093f7ffbfb2"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+        let app = document.getElementById("app");
+        var todoCollection =  db.collection('todo');
+        updateView()
+        function updateView(){
+            var html = ``;
+            app.innerHTML = ``;
+            html +=`<input id="name" type="text" >`;
+            html +=`<input id="content" type="text" >`;
+            html +=`<input type="submit" onclick="add()">`;
+            
+            app.innerHTML = html;
+           
+            db.collection("todo").where("completed", "==", false)
+            .get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    // doc.data() is never undefined for query doc snapshots
+                    let data = doc.data();
+                    html += `<div class="todo"><div><h2>` + data.todoName + `</h2>`;
+                    html += `` + data.todoContent + `</div>`;
+                    html += `<div>`+ data.completed + `</div>`;
+                    console.log(doc.id, " => ", doc.data());
+                    app.innerHTML += html;
+                });
+            })
+            .catch((error) => {
+                console.log("Error getting documents: ", error);
+            });
+            
+            html = ``;
+            html += '</div>';
+            app.innerHTML += html;
+        }
+        function add(){
+            let todoName = document.getElementById("name");
+            let todoContent = document.getElementById("content");
+            todoCollection.add({todoName: todoName.value, todoContent: todoContent.value, completed: 'false'});
+            
+            updateView();
+        }
+
+
+
+
+        </script>
+        <script src="" async defer></script>
+    </body>
+</html>

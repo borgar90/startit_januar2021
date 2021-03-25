@@ -1,0 +1,6 @@
+model = {
+    todoScreen: 'init',
+    todos: [
+       
+    ],
+}

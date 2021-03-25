@@ -1,0 +1,62 @@
+#app{
+    width:800px; 
+    margin:auto;
+}
+
+.lineTrough p{
+    text-decoration: line-through;
+    
+}
+li {
+    list-style: none;
+    text-align: center;
+}
+input{
+    border: none;
+    border-bottom: 1px solid #31efb8;
+}
+
+button{
+    background-color: #31efb8;
+    color:white;
+    border: none;
+    font-size: 16px;
+    padding:10px;
+    margin:10px;
+}
+button:hover{
+    cursor: pointer;
+}
+.delete{
+    background-color: #ef3131;
+}
+.noMargin{
+    margin:auto;
+    text-align: center;
+}
+.add{
+    background-color: #31efb8;
+    color:white;
+    padding:10px;
+    font-size:24px;
+    margin-left:10px;
+}
+.add:hover{
+    cursor: pointer;
+}
+
+li p{
+    width: 400px;
+    display: inline-block;
+    text-align: start;
+}
+li button {
+    display: inline-block;
+}
+.todoWrapper{
+    margin: auto;
+    text-align: center;
+    margin-bottom: 30px;
+}
+li{
+}

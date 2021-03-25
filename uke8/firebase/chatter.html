@@ -45,34 +45,50 @@
             
         }
         function updateView(){
+           
             let html = ``;
-            
+            app.innerHTML = ``;
             chatCollection.orderBy('Date').onSnapshot(
+            
             function (collectionSnapshot){
+                
                 html += '<div id="chat">';
                 collectionSnapshot.forEach(
                    
                     function (messageItemSnapshot){
                         html += '<div id="chatmessage">';
                         let messageItem = messageItemSnapshot.data();
+                        console.log();
                         html += messageItem.Message +' ';
                         html += messageItem.Date;
+                        html += `<a href="#" onclick="deleteCollection('${messageItemSnapshot.id}')">Delete</a>`;
                         html += `<br>`;
                         html += '</div>';
                     })
                 
-                app.innerHTML += html;
+                    app.innerHTML = html;
             });
+            
+            html = ``;
             html += '</div>';
             html += `<input type="text" onkeydown="if(event.keyCode === 13) add(this)">`;
-            console.log(html);
+            
             app.innerHTML += html;
            
+        }
+        function deleteCollection(id){
+           chatCollection.doc(id).delete().then(() => {
+                console.log("Document successfully deleted!");
+            }).catch((error) => {
+                console.error("Error removing document: ", error);
+            });
+            updateView();
         }
         function add(inputTag){
             let msg = inputTag.value;
             let date = new Date();
             chatCollection.add({Message: msg, Date: date});
+            updateView();
         }
 
         </script>
